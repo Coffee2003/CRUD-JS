@@ -16,7 +16,7 @@ if(id!='' && name!=''){
     students.push(stud);
     display();
     console.log(students)
-    localStorage();
+    localStorage.setItem("arr",JSON.stringify(students));
 }else{
     const str="<div class='alert alert-warning alert-dismissible fade show' role='alert'><strong>Warning!</strong> Please enter both the inputs.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>"
     document.getElementById('error').innerHTML=str;
@@ -40,13 +40,13 @@ tbody.innerHTML='';
     })
 }
 
-function localStorage(){
-    localStorage.setItem("JSON",JSON.stringify(students));
-}
+    
+
 
 const deleteStudent=(index)=>{
     students.splice(index,1);
     display();
+    localStorage.setItem("arr",JSON.stringify(students));
 }
 
 const updateStudent=(index)=>{
@@ -55,6 +55,7 @@ const updateStudent=(index)=>{
     if(id!=null && name!=null){
         students[index]={id,name};
         display();
+        localStorage.setItem("arr",JSON.stringify(students));
         
     }
 }
